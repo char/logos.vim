@@ -9,7 +9,7 @@ endif
 
 runtime! syntax/objc.vim
 
-syn match logosDirective '%\(hook\|group\|subclass\|ctor\)' display
+syn match logosDirective '%\(hook\|group\|subclass\|ctor\|dtor\)' display
 
 syn match logosDirective '%end' display
 
@@ -20,9 +20,12 @@ syn match logosDirective '%orig' display contained containedin=logosHook,logosSu
 
 syn match logosDirective '%init' display
 syn match logosDirective '%new' display
-syn region logosInit matchgroup=logosDirective start='%init(' end=')' contains=cParen
+syn match logosDirective '%config' display
 
+syn region logosInit matchgroup=logosDirective start='%init(' end=')' contains=cParen
 syn region logosNew oneline matchgroup=logosNew start='%new(' end=')' contains=logosTypeEncoding,logosTypeEncodingUnion
+
+syn region logosCtorBlock start="%ctor {" end="}" transparent fold
 
 syn match logosTypeEncoding '[*@#:\[\]^?{}A-Za-z0-9$=]' display contained
 syn region logosTypeEncodingUnion oneline matchgroup=logosTypeEncoding start='(' end=')' contained transparent
@@ -58,6 +61,7 @@ syn sync match logosEndSync grouphere NONE "%end"
 
 let b:current_syntax = "logos"
 hi def link logosDirective PreProc
+hi def link logosCtorBlock PreProc
 hi def link logosDirectiveArgument String
 hi def link logosError Error
 
