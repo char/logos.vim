@@ -22,8 +22,8 @@ syn match logosDirective '%init' display
 syn match logosDirective '%new' display
 syn match logosDirective '%config' display
 
-syn region logosInit matchgroup=logosDirective start='%init(' end=')' contains=cParen
-syn region logosNew oneline matchgroup=logosNew start='%new(' end=')' contains=logosTypeEncoding,logosTypeEncodingUnion
+syn region logosInit matchgroup=logosDirective start='%init(' end=');' transparent
+syn region logosNew oneline matchgroup=logosNew start='%new(' end=');' transparent
 
 syn region logosCtorBlock start="%ctor {" end="}" transparent fold
 
