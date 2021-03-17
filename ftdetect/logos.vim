@@ -1,1 +1,1 @@
-au BufNewFile,BufRead *.xm,*.xmm,*.l.mm set filetype=logos
+au BufNewFile,BufRead *.xm,*.xmm,*.l.mm,*.x set filetype=logos
